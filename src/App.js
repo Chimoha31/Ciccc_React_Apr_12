@@ -42,7 +42,7 @@ const App = () => {
       <div className="sidebar">
         <ul className="nav">
           <li>
-            <CustomLink to="/">Home</CustomLink>
+            <CustomLink to="/">Home(Test)</CustomLink>
           </li>
           <li>
             <CustomLink to="/login">Login</CustomLink>
