@@ -25,7 +25,7 @@ const App = () => {
     { path: "/", element: <Home /> },
     { path: "/login", element: <Login user={user} setUser={setUser} isLogin={isLogin} setIsLogin={setIsLogin}/> },
     { path: "/register", element: <Register /> },
-    { path: "/dashboard", element: isLogin && <Dashboard user={user} isLogin={isLogin} /> },
+    { path: "/dashboard", element: user && <Dashboard user={user} /> },
     { path: "/post/:postId", element: <PostPage /> },
     { path: "/comments", element: <Comments /> },
     { path: "/profile", element: <Profile /> },
