@@ -18,40 +18,40 @@ const NotFound = React.lazy(() => import("./pages/NotFound"));
 // {q: 'cats',src: 'caturday'}
 
 const App = () => {
-  const [user, setUser] = useState('')
-  
+  const [user, setUser] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
+
   const routes = useRoutes([
     { path: "/", element: <Home /> },
-    { path: "/login", element: <Login /> },
+    { path: "/login", element: <Login user={user} setUser={setUser} isLogin={isLogin} setIsLogin={setIsLogin}/> },
     { path: "/register", element: <Register /> },
-    { path: "/dashboard", element: <Dashboard /> },
+    { path: "/dashboard", element: isLogin && <Dashboard user={user} isLogin={isLogin} /> },
     { path: "/post/:postId", element: <PostPage /> },
     { path: "/comments", element: <Comments /> },
     { path: "/profile", element: <Profile /> },
     { path: "*", element: <NotFound /> },
-    { 
-      path: "/messages", 
-      element: <Messages />, 
-      children: [
-        { path: ":id", element: <Chats /> }
-      ]
+    {
+      path: "/messages",
+      element: <Messages />,
+      children: [{ path: ":id", element: <Chats /> }],
     },
-  ])
+  ]);
   return (
     <div className="wrapper">
       <div className="sidebar">
         <ul className="nav">
           <li>
-            <CustomLink to="/">Home(Test)</CustomLink>
+            <CustomLink to="/">Home</CustomLink>
           </li>
           <li>
-            <CustomLink to="/login">Login</CustomLink>
+           <CustomLink to="/login">Login</CustomLink>
           </li>
           <li>
             <CustomLink to="/register">Register</CustomLink>
+           
           </li>
           <li>
-            <CustomLink to="/dashboard">Dashboard</CustomLink>
+            {isLogin && <CustomLink to="/dashboard">Dashboard</CustomLink> }
           </li>
         </ul>
         {/* <Routes>
